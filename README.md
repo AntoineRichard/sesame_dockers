@@ -1,5 +1,5 @@
 # Sesame Dockers
-This git provides the necessary components required to build our docker containers.
+This git provides the necessary components required to build our docker containers.\
 To install docker one can refere to: https://docs.docker.com/desktop/
 
 Or run the following command: 
