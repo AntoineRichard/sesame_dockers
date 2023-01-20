@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python-jinja2 \
     python3-jinja2 \
     ros-noetic-perception=1.5.0-1* \
+    ros-noetic-gazebo-plugins \
     python3-catkin-tools
 
 RUN python3 -m pip install toml
@@ -33,8 +34,7 @@ WORKDIR /opt/sesame_ws/src/grvc-ual
 RUN apt-get update
 RUN ./configure_mavros.sh
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/sesame_ws
 RUN rosdep update
