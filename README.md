@@ -10,10 +10,10 @@ sudo apt install docker.io
 # Building the containers
 To build the containers used for the sesame project, we provide different docker files. 
 The total disk space required to build them is about 16Gb.
-This significant size is due to the installation of both ROS and the CUDA toolchain.
+This significant size is due to the installation of ROS, Gazebo and the CUDA toolchain.
 We install the CUDA toolchain as this is required to run and compile our neural-networks.
 
-First we will build the base image. It creates a docker with Nvidia-Cuda-11.4 and ROS Noetic.
+First we will build the base image. It creates a docker with Nvidia-Cuda-11.4, ROS Noetic.
 ```
 docker build cuda11.4_ros_noetic_docker -t focal_cuda11_4_noetic
 ```
