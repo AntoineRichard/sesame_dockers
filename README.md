@@ -1,9 +1,10 @@
 # Sesame Dockers
 This git provides the necessary components required to build our docker containers.
-To install docker one can refere to:
+To install docker one can refere to: https://docs.docker.com/desktop/
 
-Or run the following command:
+Or run the following command: 
 ```
+sudo apt install docker.io
 ```
 
 # Building the containers
