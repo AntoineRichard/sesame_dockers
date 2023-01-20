@@ -20,7 +20,8 @@ WORKDIR /opt/sesame_ws/src
 
 RUN git clone https://github.com/AntoineRichard/grvc-ual-3.1-noetic.git grvc-ual
 RUN git clone https://github.com/AntoineRichard/PX4-V1.10.2-gz11.git Firmware
-RUN git clone https://github.com/AntoineRichard/VineyardGazebo.git
+RUN git clone https://github.com/AntoineRichard/VineyardGazebo.git vineyard
+RUN git clone https://github.com/AntoineRichard/sesame_ul_uavs.git
 RUN rosdep install --from-paths . --ignore-src -r -y
 
 WORKDIR /opt/sesame_ws/src/Firmware
