@@ -11,7 +11,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-jinja2 \
     ros-noetic-perception=1.5.0-1* \
     ros-noetic-gazebo-plugins \
-    python3-catkin-tools
+    python3-catkin-tools \
+    ros-noetic-xacro \
+    ros-noetic-joint-state-publisher \
+    ros-noetic-robot-state-publisher \
+    ros-noetic-gazebo-ros-pkgs \
+    ros-noetic-gazebo-ros-control \
+    xvfb
 
 RUN python3 -m pip install toml
 RUN python3 -m pip install markupsafe==2.0.1
