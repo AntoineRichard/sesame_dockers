@@ -41,7 +41,12 @@ docker build sesame_simulation_docker_no_nvidia -t sesame_simulation_focal_noeti
 With the docker build, the simulation can now be started from within the docker like so:
 ```
 # Start the docker (--gpus all allows the container to access the GPUs from the host device)
-docker run --gpus all --net=host -it sesame_simulation_focal_cuda11_4_noetic:latest
-# Inside the docker start the simulation (xvfb is used to allow the rendering of cameras)
-xvfb-run -a roslaunch sesame_ul_uavs aerolab_one_drone.launch
+```
+./sesame_simulation_docker_no_nvidia/run.sh
+```
+```
+./sesame_simulation_docker/run.sh
+```
+# Inside the docker start the simulation
+roslaunch sesame_ul_uavs aerolab_one_drone.launch
 ```
