@@ -38,6 +38,7 @@ If you don't have an Nvidia GPU, you can run the following instead:
 docker build sesame_simulation_docker_no_nvidia -t sesame_simulation_focal_noetic
 ```
 
+# Using the dockers
 With the docker build, the simulation can now be started from within the docker like so:
 Start the docker without nvidia gpus
 ```
@@ -47,7 +48,7 @@ Start the docker with nvidia gpus
 ```
 ./sesame_simulation_docker/run.sh
 ```
-# Inside the docker start the simulation
+Inside the docker start the simulation
 ```
 roslaunch sesame_ul_uavs aerolab_one_drone.launch
 ```
