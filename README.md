@@ -21,15 +21,24 @@ The total disk space required to build them is about 16Gb.
 This significant size is due to the installation of ROS, Gazebo and the CUDA toolchain.
 We install the CUDA toolchain as this is required to run and compile our neural-networks.
 
-First we will build the base image. It creates a docker with Nvidia-Cuda-11.4, ROS Noetic.
+First, we will build the base image. It creates a docker with Nvidia-Cuda-11.4 and ROS Noetic.
 ```
 docker build cuda11.4_ros_noetic_docker -t focal_cuda11_4_noetic
+```
+If you don't have an Nvidia graphics card, you can use the following:
+```
+docker build ros_noetic_docker -t ros_noetic_base_docker
 ```
 Then we will build our simulation environments
 ```
 docker build sesame_simulation_docker -t sesame_simulation_focal_cuda11_4_noetic
 ```
-With the docker build the simulation can now be started from within the docker like so:
+If you don't have an Nvidia GPU, you can run the following instead:
+```
+docker build sesame_simulation_docker_no_nvidia -t sesame_simulation_focal_noetic
+```
+
+With the docker build, the simulation can now be started from within the docker like so:
 ```
 # Start the docker (--gpus all allows the container to access the GPUs from the host device)
 docker run --gpus all --net=host -it sesame_simulation_focal_cuda11_4_noetic:latest
