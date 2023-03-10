@@ -56,7 +56,7 @@ Or run a full scenario:
 ```
 roslaunch sesame_ul_uavs aerolab_two_drones.launch
 ```
-Wait for the simulation to start, once its ready you should see something like that (it can take a couple minutes to spin up):
+Wait for the simulation to start, once it's ready you should see something like that (it can take a couple of minutes to spin up):
 ```
 [INFO] [1678302219.790588, 4.000000]: Safety pilot simulator for robot id [2]: arming [/uav_2/mavros/cmd/arming]
 [ INFO] [1678302220.351252091, 4.560000000]: UAL 2 ready!
