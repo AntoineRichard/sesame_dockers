@@ -29,25 +29,11 @@ if [ "${#}" -gt "0" ]; then
 fi
 
 ## GPU
-LS_HW_DISPLAY=$(lshw -short -C display 2> /dev/null | grep display)
-if [[ ${LS_HW_DISPLAY^^} =~ NVIDIA ]]; then
-    # Enable GPU either via NVIDIA Container Toolkit or NVIDIA Docker (depending on Docker version)
-    if dpkg --compare-versions "$(docker version --format '{{.Server.Version}}')" gt "19.3"; then
-        GPU_OPT="--gpus all"
-    else
-        GPU_OPT="--runtime nvidia"
-    fi
-    GPU_ENVS=(
-        NVIDIA_VISIBLE_DEVICES="all"
-        NVIDIA_DRIVER_CAPABILITIES="compute,utility,graphics"
-    )
+# Otherwise just run with DRIs
+if [[ $(getent group video) ]]; then
+    GPU_OPT="--device=/dev/dri:/dev/dri --group-add video"
 else
-    # Otherwise just run with DRIs
-    if [[ $(getent group video) ]]; then
-        GPU_OPT="--device=/dev/dri:/dev/dri --group-add video"
-    else
-        GPU_OPT="--device=/dev/dri:/dev/dri"
-    fi
+    GPU_OPT="--device=/dev/dri:/dev/dri"
 fi
 
 ## GUI
