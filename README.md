@@ -38,10 +38,41 @@ If you don't have an Nvidia GPU, you can run the following instead:
 docker build sesame_simulation_docker_no_nvidia -t sesame_simulation_focal_noetic
 ```
 
+# Using the dockers
 With the docker build, the simulation can now be started from within the docker like so:
+Start the docker without nvidia gpus
 ```
-# Start the docker (--gpus all allows the container to access the GPUs from the host device)
-docker run --gpus all --net=host -it sesame_simulation_focal_cuda11_4_noetic:latest
-# Inside the docker start the simulation (xvfb is used to allow the rendering of cameras)
-xvfb-run -a roslaunch sesame_ul_uavs aerolab_one_drone.launch
+./sesame_simulation_docker_no_nvidia/run.sh
 ```
+Start the docker with nvidia gpus
+```
+./sesame_simulation_docker/run.sh
+```
+Inside the docker start the simulation
+```
+roslaunch sesame_ul_uavs aerolab_one_drone.launch
+```
+Or run a full scenario:
+```
+roslaunch sesame_ul_uavs aerolab_two_drones.launch
+```
+Wait for the simulation to start, once it's ready you should see something like that (it can take a couple of minutes to spin up):
+```
+[INFO] [1678302219.790588, 4.000000]: Safety pilot simulator for robot id [2]: arming [/uav_2/mavros/cmd/arming]
+[ INFO] [1678302220.351252091, 4.560000000]: UAL 2 ready!
+[ WARN] [1678302231.807167530, 16.000000000]: GF: timeout, retries left 2
+[ WARN] [1678302231.807313367, 16.000000000]: WP: timeout, retries left 2
+[ WARN] [1678302232.808159510, 17.000000000]: WP: timeout, retries left 1
+[ERROR] [1678302234.992471798, 19.184000000]: FCU: IGN REQUEST LIST: Busy
+[ERROR] [1678302235.044295198, 19.236000000]: FCU: IGN REQUEST LIST: Busy
+[ WARN] [1678302235.989469453, 20.180000000]: GF: timeout, retries left 2
+[ WARN] [1678302235.989521137, 20.180000000]: RP: timeout, retries left 2
+[ERROR] [1678302235.992677881, 20.184000000]: FCU: IGN REQUEST LIST: Busy
+[ WARN] [1678302236.989915355, 21.180000000]: RP: timeout, retries left 1
+```
+Then send a flight plan to the drones!
+```
+roslaunch sesame_ul_uavs simple_mission.launch namespace:=uav_1 flight_plan_path:=$(rospack find sesame_ul_uavs)/cfg/grid_pattern_aerolab.yaml
+roslaunch sesame_ul_uavs simple_mission.launch namespace:=uav_2 flight_plan_path:=$(rospack find sesame_ul_uavs)/cfg/observer_position.yaml
+```
+In rviz you should be able to see the drones moving!
