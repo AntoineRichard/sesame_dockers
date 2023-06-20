@@ -76,3 +76,17 @@ roslaunch sesame_ul_uavs simple_mission.launch namespace:=uav_1 flight_plan_path
 roslaunch sesame_ul_uavs simple_mission.launch namespace:=uav_2 flight_plan_path:=$(rospack find sesame_ul_uavs)/cfg/observer_position.yaml
 ```
 In rviz you should be able to see the drones moving!
+
+## Building the Collaborative Sensor Estimation (CSE) container
+
+To build the CSE container run the following command.
+
+```
+docker build CollaborativeSensorFusion -t cse
+```
+
+To run the docker run the following command.
+
+```
+./CollaborativeSensorFusion/run.sh
+```
