@@ -15,7 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir -p /opt/nav_ws/src
 WORKDIR /opt/nav_ws/src
 RUN git clone https://github.com/AntoineRichard/sesame_navigation.git 
+RUN apt-get update
 RUN rosdep install --from-paths . --ignore-src -r -y
+
+RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/nav_ws
 RUN rosdep update
