@@ -90,3 +90,17 @@ To run the docker run the following command.
 ```
 ./CollaborativeSensorFusion/run.sh
 ```
+
+## Building the Sesame Navigation (sesame\_nav) container
+
+To build the `sesame\_nav` container run the following command.
+
+```
+docker build SesameNavigation -t sesame\_nav
+```
+
+To run the docker run the following command.
+
+```
+./SesameNavigation/run.sh
+```
